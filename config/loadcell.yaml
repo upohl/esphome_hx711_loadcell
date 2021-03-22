@@ -1,0 +1,47 @@
+esphome:
+  name: loadcell-left
+  platform: ESP8266
+  board: esp01
+
+wifi:
+  ssid: !secret ssid
+  password: !secret password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Loadcell-Left Fallback Hotspot"
+    password: !secret fallback_password
+  manual_ip:
+    # Set this to the IP of the ESP
+    static_ip: !secret static_ip
+    # Set this to the IP address of the router. Often ends with .1
+    gateway: 192.168.2.1
+    # The subnet of the network. 255.255.255.0 works for most home networks.
+    subnet: 255.255.255.0
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret api_password
+
+ota:
+  password: !secret ota_password
+
+sensor:
+  - platform: hx711
+    name: "HX711 Value"
+    dout_pin: 0
+    clk_pin: 2
+    gain: 128
+    update_interval: 1s
+    filters:
+      - calibrate_linear:
+          - 96272 -> 0
+          - 306627 -> 1973
+    unit_of_measurement: g
+
+web_server:
+  port: 80
