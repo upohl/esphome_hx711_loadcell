@@ -1,3 +1,5 @@
+![alt text](https://github.com/upohl/esphome_hx711_loadcell/blob/main/FritzingLoadcellSchematic_bb.png?raw=true)
+
 # Parts 
 HX711+LoadCell 20KG e.g. https://de.aliexpress.com/categories/hx711-load-cells.html
 ESP01 
