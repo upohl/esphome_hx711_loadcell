@@ -8,6 +8,8 @@ wifi:
   password: !secret password
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
+  #wifi power save modes none,light,high
+  power_save_mode: none 
   ap:
     ssid: "Loadcell-Left Fallback Hotspot"
     password: !secret fallback_password
